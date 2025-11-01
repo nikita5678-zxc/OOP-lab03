@@ -20,10 +20,13 @@ Rectangle::Rectangle(const Rectangle& other)
     : x1(other.x1), y1(other.y1), x2(other.x2), y2(other.y2) {}
 
 Rectangle::Rectangle(Rectangle&& other) noexcept
-    : x1(std::move(other.x1)),
-      y1(std::move(other.y1)),
-      x2(std::move(other.x2)),
-      y2(std::move(other.y2)) {}
+    : x1(other.x1),
+      y1(other.y1),
+      x2(other.x2),
+      y2(other.y2)
+{
+    other.x1 = other.y1 = other.x2 = other.y2 = 0.0;
+}
 
 
 Rectangle& Rectangle::operator=(const Rectangle& other) {
@@ -38,10 +41,11 @@ Rectangle& Rectangle::operator=(const Rectangle& other) {
 
 Rectangle& Rectangle::operator=(Rectangle&& other) noexcept {
     if (this == &other) return *this;
-    x1 = std::move(other.x1);
-    y1 = std::move(other.y1);
-    x2 = std::move(other.x2);
-    y2 = std::move(other.y2);
+    x1 = other.x1;
+    y1 = other.y1;
+    x2 = other.x2;
+    y2 = other.y2;
+
     other.x1 = other.y1 = other.x2 = other.y2 = 0.0;
     return *this;
 }

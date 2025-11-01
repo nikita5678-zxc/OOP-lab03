@@ -14,8 +14,6 @@ int main() {
     std::cout << "=== Все фигуры ===\n";
     arr.printFigures();
 
-    std::cout << "\n=== Центры фигур ===\n";
-
     std::cout << "\n=== Общая площадь ===\n";
     arr.totalArea(); 
 
